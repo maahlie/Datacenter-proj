@@ -45,6 +45,11 @@ li a:hover {
     justify-content: space-between;;
 }
 
+.main-content-2{
+    display: flex;
+    flex-direction: row;
+}
+
 .degrees {
     width: 285px;
     height: 149px;
@@ -148,4 +153,21 @@ li a:hover {
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  .settings-1{
+    margin-left: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .setting-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .p-1{
+    width: 100px;
   }
