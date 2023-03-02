@@ -93,6 +93,7 @@ li a:hover {
 .image-logo{
     height: 63px;
     width: 155px;
+    margin: auto;
 }
 
 .switch {
