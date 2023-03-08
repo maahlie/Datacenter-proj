@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+</head>
+
+<body>
+
+    <button>Send an HTTP GET request to a page and get the result back</button>
+
+    <div id="cpu_temp"></div>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-4CeYCqQ3-XK2dCK9w1LenLZ78csVkHY",
+            authDomain: "rpi-dht-monitor-ac4b9.firebaseapp.com",
+            databaseURL: "https://rpi-dht-monitor-ac4b9-default-rtdb.firebaseio.com",
+            projectId: "rpi-dht-monitor-ac4b9",
+            storageBucket: "rpi-dht-monitor-ac4b9.appspot.com",
+            messagingSenderId: "978025601907",
+            appId: "1:978025601907:web:084ca2d85d6b9a5b930306"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        var dbRef = firebase.database();
+        var sensorsRef = dbRef.ref('sensor');
+        let cpu_temp = document.getElementById("cpu_temp");
+
+        var start = new Date;
+
+        sensorsRef.on("child_added", function (snap) {
+            console.log('key:', snap.key, ' data: ', snap.val());
+            var data = snap.val();
+            cpu_temp.innerHTML = data.cpu_temperatuur;
+            
+        });
+    </script>
+</body>
+
+</html>

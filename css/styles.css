@@ -31,6 +31,7 @@ body {
 
 .background-cyan {
   background: linear-gradient(to right, var(--color-light-cyan), var(--color-blue));
+  background: #00beff;
 }
 
 .container {
@@ -47,7 +48,7 @@ body {
 }
 
 .dashboard-header {
-  background-color: var(--color-dark-cyan);
+  background-color: #973939;
   color: #fff;
   padding: .75rem 1rem;
   display: flex;
@@ -180,9 +181,7 @@ body {
   font-size: 1rem;
 }
 
-.weather-days__item:first-child .weather-days__humidity:before {
-  content: 'Hum: ';
-}
+
 
 
 .weather-days__humidity {
@@ -192,7 +191,7 @@ body {
 }
 
 .weather-days__humidity:after {
-  content: 'mm';
+  content: '°';
 }
 
 .weather-days__title {

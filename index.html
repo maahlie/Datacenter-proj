@@ -1,13 +1,17 @@
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dashboard</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
 </head>
+
 <body class="background-cyan">
     <div class="container">
         <div class="dashboard">
@@ -16,7 +20,8 @@
                 <div class="dashboard-header__date">Sunday, October 19th</div>
             </div>
             <div class="dashboard-card weather">
-                <div class="dashboard-card__title"><span class="wi wi-day-sunny"></span>Weather</div>
+                <div class="dashboard-card__title"><span class="wi wi-day-sunny"></span>Gemiddelde temperatuur afgelopen
+                    dagen</div>
                 <div class="dashboad-card__content">
                     <div class="dashboard-card__card-piece">
                         <div class="weather-days">
@@ -25,38 +30,39 @@
                                 <div class="weather-days__icon">
                                     <span class="wi wi-day-cloudy"></span>
                                 </div>
-                                <div class="weather-days__humidity">0.2</div>
+                                <div class="weather-days__humidity">21</div>
                             </div>
                             <div class="weather-days__item">
                                 <div class="weather-days__title">Mon</div>
                                 <div class="weather-days__icon">
                                     <span class="wi wi-cloudy"></span>
                                 </div>
-                                <div class="weather-days__humidity">0.4</div>
+                                <div class="weather-days__humidity">21</div>
                             </div>
                             <div class="weather-days__item">
                                 <div class="weather-days__title">Tue</div>
                                 <div class="weather-days__icon">
                                     <span class="wi wi-day-rain"></span>
                                 </div>
-                                <div class="weather-days__humidity">0.7</div>
+                                <div class="weather-days__humidity">21</div>
                             </div>
                             <div class="weather-days__item">
                                 <div class="weather-days__title">Wed</div>
                                 <div class="weather-days__icon">
                                     <span class="wi wi-day-rain"></span>
                                 </div>
-                                <div class="weather-days__humidity">0.9</div>
+                                <div class="weather-days__humidity">21</div>
                             </div>
                             <div class="weather-days__item">
                                 <div class="weather-days__title">Thu</div>
                                 <div class="weather-days__icon">
                                     <span class="wi wi-day-sunny"></span>
                                 </div>
-                                <div class="weather-days__humidity">0.1</div>
+                                <div class="weather-days__humidity">21</div>
                             </div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="1">View in details<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="1">View in details<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
             </div>
@@ -69,7 +75,7 @@
                                 <div class="stats__title">Indoor</div>
                                 <div class="stats__icon"><span class="fa fa-home"></span></div>
                                 <div class="stats__measure">
-                                    <div class="stats__value">22</div>
+                                    <div class="stats__value" id="cpu_temp"></div>
                                     <div class="stats__unit stats__unit_celsius">C</div>
                                 </div>
                             </div>
@@ -82,7 +88,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
             </div>
@@ -94,7 +101,8 @@
                             <div class="status__icon"><span class="fa fa-check"></span></div>
                             <div class="status__text">Activated</div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
             </div>
@@ -106,7 +114,8 @@
                             <div class="status__icon"><span class="fa fa-times"></span></div>
                             <div class="status__text">Disabled</div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
             </div>
@@ -171,7 +180,8 @@
                                 <div class="stats__unit stats__unit_meter">m</div>
                             </div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                     <div class="dashboard-card__card-piece">
                         <div class="stats__item">
@@ -182,7 +192,8 @@
                                 <div class="stats__unit stats__unit_power">kw/h</div>
                             </div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                     <div class="dashboard-card__card-piece">
                         <div class="stats__item">
@@ -193,12 +204,40 @@
                                 <div class="stats__unit stats__unit_meter">m</div>
                             </div>
                         </div>
-                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span class="fa fa-angle-right"></span></a>
+                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
+                                class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
 
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-4CeYCqQ3-XK2dCK9w1LenLZ78csVkHY",
+            authDomain: "rpi-dht-monitor-ac4b9.firebaseapp.com",
+            databaseURL: "https://rpi-dht-monitor-ac4b9-default-rtdb.firebaseio.com",
+            projectId: "rpi-dht-monitor-ac4b9",
+            storageBucket: "rpi-dht-monitor-ac4b9.appspot.com",
+            messagingSenderId: "978025601907",
+            appId: "1:978025601907:web:084ca2d85d6b9a5b930306"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        var dbRef = firebase.database();
+        var sensorsRef = dbRef.ref('sensor');
+        let cpu_temp = document.getElementById("cpu_temp");
+
+        var start = new Date;
+
+        sensorsRef.on("child_added", function (snap) {
+            console.log('key:', snap.key, ' data: ', snap.val());
+            var data = snap.val();
+            cpu_temp.innerHTML = data.cpu_temperatuur;
+
+        });
+    </script>
 </body>
+
 </html>
