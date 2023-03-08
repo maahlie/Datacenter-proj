@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Begin Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
+    <!-- End Firebase -->
 </head>
 
 <body class="background-cyan">
@@ -67,24 +73,24 @@
                 </div>
             </div>
             <div class="dashboard-card temperature">
-                <div class="dashboard-card__title"><span class="wi wi-thermometer"></span>Temperature</div>
+                <div class="dashboard-card__title"><span class="fa fa-home"></span>Serverkamer</div>
                 <div class="dashboad-card__content">
                     <div class="dashboard-card__card-piece">
                         <div class="temperature-stats">
                             <div class="stats__item">
-                                <div class="stats__title">Indoor</div>
-                                <div class="stats__icon"><span class="fa fa-home"></span></div>
+                                <div class="stats__title">temp</div>
+                                <div class="stats__icon"><span class="wi wi-thermometer"></span></div>
                                 <div class="stats__measure">
                                     <div class="stats__value" id="cpu_temp"></div>
                                     <div class="stats__unit stats__unit_celsius">C</div>
                                 </div>
                             </div>
                             <div class="stats__item">
-                                <div class="stats__title">Outdoor</div>
-                                <div class="stats__icon"><span class="wi wi-day-cloudy"></span></div>
+                                <div class="stats__title">RH</div>
+                                <div class="stats__icon"><span class="wi wi-humidity"></span></div>
                                 <div class="stats__measure">
-                                    <div class="stats__value">18</div>
-                                    <div class="stats__unit stats__unit_celsius">C</div>
+                                    <div class="stats__value" id="luchtvochtigheid"></div>
+                                    <div class="stats__unit stats__unit_power">%</div>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +100,12 @@
                 </div>
             </div>
             <div class="dashboard-card wifi">
-                <div class="dashboard-card__title"><span class="fa fa-wifi"></span>Wifi</div>
+                <div class="dashboard-card__title"><span class="fa fa-clock"></span>Gelezen op</div>
                 <div class="dashboad-card__content">
                     <div class="dashboard-card__card-piece">
                         <div class="status status_success">
                             <div class="status__icon"><span class="fa fa-check"></span></div>
-                            <div class="status__text">Activated</div>
+                            <div class="status__text" id="key"></div>
                         </div>
                         <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
                                 class="fa fa-angle-right"></span></a>
@@ -169,15 +175,15 @@
                 </div>
             </div>
             <div class="dashboard-card power">
-                <div class="dashboard-card__title"><span class="fa fa-bar-chart"></span>Power</div>
+                <div class="dashboard-card__title"><span class="fa fa-bar-chart"></span>Raspberry pi</div>
                 <div class="dashboad-card__content">
                     <div class="dashboard-card__card-piece">
                         <div class="stats__item">
-                            <div class="stats__title">Water</div>
-                            <div class="stats__icon"><span class="wi wi-raindrop"></span></div>
+                            <div class="stats__title">Temp</div>
+                            <div class="stats__icon"><span class="fa-brands fa-raspberry-pi"></span></div>
                             <div class="stats__measure">
-                                <div class="stats__value">14</div>
-                                <div class="stats__unit stats__unit_meter">m</div>
+                                <div class="stats__value" id="cpu_temperatuur"></div>
+                                <div class="stats__unit stats__unit_power">°C</div>
                             </div>
                         </div>
                         <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
@@ -185,11 +191,11 @@
                     </div>
                     <div class="dashboard-card__card-piece">
                         <div class="stats__item">
-                            <div class="stats__title">Electricity</div>
-                            <div class="stats__icon"><span class="fa fa-flash"></span></div>
+                            <div class="stats__title">CPU</div>
+                            <div class="stats__icon"><span class="fa fa-microchip"></span></div>
                             <div class="stats__measure">
-                                <div class="stats__value">49</div>
-                                <div class="stats__unit stats__unit_power">kw/h</div>
+                                <div class="stats__value" id="cpu_usage"></div>
+                                <div class="stats__unit stats__unit_power">%</div>
                             </div>
                         </div>
                         <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
@@ -197,11 +203,11 @@
                     </div>
                     <div class="dashboard-card__card-piece">
                         <div class="stats__item">
-                            <div class="stats__title">Gas</div>
-                            <div class="stats__icon"><span class="fa fa-fire"></span></div>
+                            <div class="stats__title">RAM</div>
+                            <div class="stats__icon"><span class="fa fa-memory"></span></div>
                             <div class="stats__measure">
-                                <div class="stats__value">37</div>
-                                <div class="stats__unit stats__unit_meter">m</div>
+                                <div class="stats__value" id="ram_usage"></div>
+                                <div class="stats__unit stats__unit_power">%</div>
                             </div>
                         </div>
                         <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
