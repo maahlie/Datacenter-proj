@@ -30,7 +30,6 @@ body {
 }
 
 .background-cyan {
-  background: linear-gradient(to right, var(--color-light-cyan), var(--color-blue));
   background: #00beff;
 }
 
