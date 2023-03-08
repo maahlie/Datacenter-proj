@@ -9,17 +9,32 @@ const firebaseConfig = {
     appId: "1:978025601907:web:084ca2d85d6b9a5b930306"
 };
 
-// Initialize Firebase
+// // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// Set database variable
-var database = firebase.database().ref("sensor");
+// // Set database variable
+var sensor = firebase.database().ref("sensor");
 
-// Get data from firebase
-database.on("value", function(snapshot){
-    console.clear();
-    snapshot.forEach(function(element){
-        console.log(element.key);
-        console.log(element.val())
-    })
-})
+function GetLastRecord() {
+    sensor.orderByChild("key").limitToLast(1).on("value", function (snapshot) {
+        snapshot.forEach(function (element) {
+            document.getElementById("kamertemperatuur").innerHTML = element.val().kamertemperatuur;
+            document.getElementById("luchtvochtigheid").innerHTML = element.val().luchtvochtigheid;
+            document.getElementById("key").innerHTML = element.key;
+            document.getElementById("cpu_temperatuur").innerHTML = element.val().cpu_temperatuur;
+            document.getElementById("cpu_usage").innerHTML = element.val().cpu_usage;
+            document.getElementById("ram_usage").innerHTML = element.val().ram_usage;
+        });
+
+    });
+}
+
+function GetAllRecords() {
+    sensor.on("value", function (snapshot) {
+        console.clear();
+        snapshot.forEach(function (element) {
+            console.log(element.key);
+            console.log(element.val());
+        });
+    });
+}
