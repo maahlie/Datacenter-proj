@@ -24,6 +24,7 @@ function GetLastRecord() {
             document.getElementById("cpu_temperatuur").innerHTML = element.val().cpu_temperatuur;
             document.getElementById("cpu_usage").innerHTML = element.val().cpu_usage;
             document.getElementById("ram_usage").innerHTML = element.val().ram_usage;
+            document.getElementById("pre-loader").style.display = "none";
         });
 
     });
