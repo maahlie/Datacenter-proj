@@ -1,0 +1,211 @@
+{% extends "layout.html" %}
+{% block content %}
+<body class="background-cyan">
+    <div class="container">
+        <div class="dashboard">
+            <div class="dashboard-card weather">
+                <div class="dashboard-card__title"><span class="wi wi-day-sunny"></span>Weather</div>
+                <div class="dashboad-card__content">
+                    <div class="dashboard-card__card-piece">
+                        <div class="weather-days">
+                            <div class="weather-days__item">
+                                <div class="weather-days__title">Today</div>
+                                <div class="weather-days__icon">
+                                    <span class="wi wi-day-cloudy"></span>
+                                </div>
+                                <div class="weather-days__humidity">0.2</div>
+                            </div>
+                            <div class="weather-days__item">
+                                <div class="weather-days__title">Mon</div>
+                                <div class="weather-days__icon">
+                                    <span class="wi wi-cloudy"></span>
+                                </div>
+                                <div class="weather-days__humidity">0.4</div>
+                            </div>
+                            <div class="weather-days__item">
+                                <div class="weather-days__title">Tue</div>
+                                <div class="weather-days__icon">
+                                    <span class="wi wi-day-rain"></span>
+                                </div>
+                                <div class="weather-days__humidity">0.7</div>
+                            </div>
+                            <div class="weather-days__item">
+                                <div class="weather-days__title">Wed</div>
+                                <div class="weather-days__icon">
+                                    <span class="wi wi-day-rain"></span>
+                                </div>
+                                <div class="weather-days__humidity">0.9</div>
+                            </div>
+                            <div class="weather-days__item">
+                                <div class="weather-days__title">Thu</div>
+                                <div class="weather-days__icon">
+                                    <span class="wi wi-day-sunny"></span>
+                                </div>
+                                <div class="weather-days__humidity">0.1</div>
+                            </div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="1">View in details<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card temperature">
+                <div class="dashboard-card__title"><span class="fa fa-home"></span>Serverkamer</div>
+                <div class="dashboad-card__content">
+                    <div class="dashboard-card__card-piece">
+                        <div class="temperature-stats">
+                            <div class="stats__item">
+                                <div class="stats__title">temp</div>
+                                <div class="stats__icon"><span class="wi wi-thermometer"></span></div>
+                                <div class="stats__measure">
+                                    <div class="stats__value" id="kamertemperatuur"></div>
+                                    <div class="stats__unit stats__unit_celsius">C</div>
+                                </div>
+                            </div>
+                            <div class="stats__item">
+                                <div class="stats__title">RH</div>
+                                <div class="stats__icon"><span class="wi wi-humidity"></span></div>
+                                <div class="stats__measure">
+                                    <div class="stats__value" id="luchtvochtigheid"></div>
+                                    <div class="stats__unit stats__unit_power">%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card wifi">
+                <div class="dashboard-card__title"><span class="fa fa-clock"></span>Gelezen op</div>
+                <div class="dashboad-card__content">
+                    <div class="dashboard-card__card-piece">
+                        <div class="status status_success">
+                            <div class="status__icon"><span class="fa fa-check"></span></div>
+                            <div class="status__text" id="key"></div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card alarm">
+                <div class="dashboard-card__title"><span class="fa fa-bell-o"></span>Alarm</div>
+                <div class="dashboad-card__content">
+                    <div class="dashboard-card__card-piece">
+                        <div class="status status_danger">
+                            <div class="status__icon"><span class="fa fa-times"></span></div>
+                            <div class="status__text">Disabled</div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="1">Edit<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card light">
+                <div class="dashboard-card__title"><span class="fa fa-lightbulb-o"></span>Light</div>
+                <div class="dashboad-card__content">
+                    <div class="dashboard-card__card-piece">
+                        <div class="light-switches">
+                            <div class="switch switch_order-1">
+                                <div class="switch__name">Entrance hall</div>
+                                <input type="checkbox" id="switch1" class="switch__input" tabindex="2" checked></input>
+                                <label for="switch1" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-2">
+                                <div class="switch__name">Bedroom 1</div>
+                                <input type="checkbox" id="switch2" class="switch__input" tabindex="3"></input>
+                                <label for="switch2" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-1">
+                                <div class="switch__name">Living room</div>
+                                <input type="checkbox" id="switch3" class="switch__input" tabindex="2"></input>
+                                <label for="switch3" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-2">
+                                <div class="switch__name">Bedroom 2</div>
+                                <input type="checkbox" id="switch4" class="switch__input" tabindex="3"></input>
+                                <label for="switch4" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-1">
+                                <div class="switch__name">Dining room</div>
+                                <input type="checkbox" id="switch5" class="switch__input" tabindex="2" checked></input>
+                                <label for="switch5" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-2">
+                                <div class="switch__name">Bedroom 3</div>
+                                <input type="checkbox" id="switch6" class="switch__input" tabindex="3" checked></input>
+                                <label for="switch6" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-1">
+                                <div class="switch__name">Bathroom</div>
+                                <input type="checkbox" id="switch7" class="switch__input" tabindex="2"></input>
+                                <label for="switch7" class="switch__label"></label>
+                            </div>
+                            <div class="switch switch_order-2">
+                                <div class="switch__name">WC</div>
+                                <input type="checkbox" id="switch8" class="switch__input" tabindex="3"></input>
+                                <label for="switch8" class="switch__label"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card power">
+                <div class="dashboard-card__title"><span class="fa fa-bar-chart"></span>Raspberry pi</div>
+                <div class="dashboad-card__content">
+                    <div class="dashboard-card__card-piece">
+                        <div class="stats__item">
+                            <div class="stats__title">Temp</div>
+                            <div class="stats__icon"><span class="fa-brands fa-raspberry-pi"></span></div>
+                            <div class="stats__measure">
+                                <div class="stats__value" id="cpu_temperatuur"></div>
+                                <div class="stats__unit stats__unit_power">°C</div>
+                            </div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                    <div class="dashboard-card__card-piece">
+                        <div class="stats__item">
+                            <div class="stats__title">CPU</div>
+                            <div class="stats__icon"><span class="fa fa-microchip"></span></div>
+                            <div class="stats__measure">
+                                <div class="stats__value" id="cpu_usage"></div>
+                                <div class="stats__unit stats__unit_power">%</div>
+                            </div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                    <div class="dashboard-card__card-piece">
+                        <div class="stats__item">
+                            <div class="stats__title">RAM</div>
+                            <div class="stats__icon"><span class="fa fa-memory"></span></div>
+                            <div class="stats__measure">
+                                <div class="stats__value" id="ram_usage"></div>
+                                <div class="stats__unit stats__unit_power">%</div>
+                            </div>
+                        </div>
+                        <a href="#" class="dashboard-card__link" tabindex="4">View in details<span
+                                class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        GetLastRecord();
+    </script>
+    <!-- Loading -->
+    <div id="pre-loader">
+        <div id="loader-logo"></div>
+        <div id="loader-circle"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!-- Loading -->
+
+</body>
+</html>
+{% endblock %}
