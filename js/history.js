@@ -2,7 +2,7 @@
 import { sensor } from "./firebase.js";
 
 // GetAllRecords
-sensor.limitToLast(1000).on("value", function (snapshot) {
+sensor.on("value", function (snapshot) {
   snapshot.forEach(function (element) {
     document.getElementById("history").innerHTML += `
       <li>
@@ -29,7 +29,7 @@ sensor.limitToLast(1000).on("value", function (snapshot) {
       rect.top >= 0 &&
       rect.left >= 0 &&
       rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
+      (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   }

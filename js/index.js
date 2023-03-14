@@ -1,7 +1,5 @@
 // import firebase file
-import{
-    sensor
-}from './firebase.js';
+import { sensor } from "./firebase.js";
 
 // GetLastRecord
 sensor
