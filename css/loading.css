@@ -1,5 +1,5 @@
 #pre-loader {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -30,7 +30,7 @@
     height: 9.375em;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("http://imgh.us/loading_4.svg");
+    /* background-image: url("http://imgh.us/loading_4.svg"); */
     z-index: 1001; }
   
   #loader-circle {
