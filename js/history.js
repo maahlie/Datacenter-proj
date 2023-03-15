@@ -1,20 +1,22 @@
 // import firebase file
 import { sensor } from "./firebase.js";
 
-// GetAllRecords
-sensor.on("value", function (snapshot) {
-  snapshot.forEach(function (element) {
+// Get All Records once
+sensor.once("value", function (snapshot) {
+  Object.entries(snapshot.val()).reverse().forEach(function (element) {
     document.getElementById("history").innerHTML += `
       <li>
       <div>
-      <time>${element.key}</time>
+      <time>${element[0]}</time>
         <div class="discovery">
           <h1>Kamertemperatuur</h1>
-          <h1>${element.val().kamertemperatuur}°C</h1>
+          <br/>
+          <h1>${element[1].kamertemperatuur}°C</h1>
         </div>
         <div class="scientist">
           <h1>Luchtvochtigheid</h1>
-          <h1>${element.val().luchtvochtigheid}%</h1>
+          <br/>
+          <h1>${element[1].luchtvochtigheid}%</h1>
         </div>
       </div>
     </li>
